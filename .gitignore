@@ -1,0 +1,19 @@
+# 秘密情報 — 絶対にコミットしない
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service-account*.json
+
+# OS / エディタ
+.DS_Store
+.idea/
+.vscode/
+
+# 依存・ビルド成果物
+node_modules/
+dist/
+.next/
+tmp/
