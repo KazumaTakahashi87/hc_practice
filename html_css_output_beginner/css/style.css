@@ -1,0 +1,174 @@
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font: 16px/1.6 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', meiryo, sans-serif;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Layout：コンテンツ幅960px・横のパディング4% */
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 4%;
+}
+
+/* Header */
+.header-inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  background: #343a4b;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  font-size: 13px;
+}
+
+/* Main visual：全幅・高さ600px固定 */
+.main-visual {
+  height: 600px;
+}
+
+.main-visual-image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* About */
+.about {
+  padding: 80px 0;
+}
+
+.section-title {
+  border-bottom: 1px solid #333;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin: 0 auto 40px;
+  padding: 0 2px 4px;
+  width: fit-content;
+}
+
+.about-content {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.about-name {
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.about-text {
+  color: #555;
+  font-size: 13px;
+  letter-spacing: .1em;
+  margin: 0;
+}
+
+/* 画像を丸く切り抜く */
+.about-image {
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 150px;
+  width: 150px;
+}
+
+/* Profile */
+.profile {
+  padding: 0 0 80px;
+}
+
+.profile-list {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-card {
+  text-align: center;
+  width: 230px;
+}
+
+.profile-card-title {
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.profile-card-text {
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+/* Footer */
+.footer {
+  padding: 40px 0 20px;
+}
+
+.copyright {
+  font-size: 10px;
+  margin: 0;
+  text-align: center;
+}
+
+/* Smartphone：600px以下は縦積み */
+@media (max-width: 600px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-name {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 16px;
+  }
+
+  .profile-list {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .profile-card {
+    width: 100%;
+  }
+}
