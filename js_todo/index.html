@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo List</title>
+    <!-- Tailwind CSS を CDN で読み込む -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.4"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="min-h-screen bg-slate-100 px-4 py-12 text-slate-800">
+    <main class="mx-auto max-w-xl rounded-xl bg-white p-6 shadow">
+      <h1 class="mb-6 text-2xl font-bold">ToDo List</h1>
+
+      <!-- Create：入力フィールドと保存ボタン -->
+      <form id="todo-form" class="mb-6 flex gap-2">
+        <input
+            id="todo-input"
+            type="text"
+            placeholder="例：掃除"
+            class="flex-1 rounded border border-slate-300 px-3 py-2 focus:border-sky-500 focus:outline-none">
+        <button type="submit" class="rounded bg-sky-600 px-4 py-2 font-bold text-white hover:bg-sky-700">
+          保存
+        </button>
+      </form>
+
+      <!-- タスクの数 -->
+      <p id="todo-count" class="mb-4 text-sm text-slate-600"></p>
+
+      <!-- Read：ToDo一覧（script.js で中身を作る） -->
+      <ul id="todo-list" class="space-y-2"></ul>
+    </main>
+  </body>
+</html>
