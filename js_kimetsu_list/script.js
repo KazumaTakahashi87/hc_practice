@@ -95,6 +95,9 @@ async function loadCharacters(category) {
 
     renderCharacters(characters);
   } catch (e) {
+    // 原因を調べやすくするため、エラーの内容をコンソールに出す
+    console.error(e);
+
     if (currentRequest === requestCount) {
       showError('キャラクターを読み込めませんでした。時間をおいてもう一度お試しください。');
     }
