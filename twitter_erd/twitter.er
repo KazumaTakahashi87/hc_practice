@@ -1,0 +1,84 @@
+[users]
+  *id {label: "bigint, not null"}
+  email_encrypted {label: "varchar, not null"}
+  email_hashed {label: "varchar, not null, uniq"} 
+  password_hashed {label: "varchar, not null"} 
+  username {label: "varchar, not null, uniq"}
+  display_name {label: "varchar, not null"}
+  phone_number_encrypted {label: "varchar, null"}
+  phone_number_hashed {label: "varchar, null, uniq"}
+  birthday_encrypted {label: "varchar, not null"}
+  bio {label: "text, null"}
+  website {label: "varchar, null"}
+  profile_image_url {label: "varchar, null"}
+  header_image_url {label: "varchar, null"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[tweets]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  content {label: "varchar(140), not null"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[likes]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users),uniq(user_id, tweet_id)"}
+  tweet_id {label: "bigint, not null, FK(tweets),uniq(user_id, tweet_id)"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[retweets]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users),uniq(user_id, tweet_id)"}
+  tweet_id {label: "bigint, not null, FK(tweets),uniq(user_id, tweet_id)"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[bookmarks]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users),uniq(user_id, tweet_id)"}
+  tweet_id {label: "bigint, not null, FK(tweets),uniq(user_id, tweet_id)"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[follows]
+  *id {label: "bigint, not null"}
+  follower_id {label: "bigint, not null, FK(users),uniq(follower_id, followee_id)"}
+  followee_id {label: "bigint, not null, FK(users),uniq(follower_id, followee_id)"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[direct_messages]
+  *id {label: "bigint, not null"}
+  sender_id {label: "bigint, not null, FK(users)"}
+  receiver_id {label: "bigint, not null, FK(users)"}
+  content_encrypted {label: "text, not null"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+[notifications]
+  *id {label: "bigint, not null"}
+  recipient_id {label: "bigint, not null, FK(users)"}
+  actor_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, null, FK(tweets)"}
+  notification_type {label: "varchar, not null"}
+  is_read {label: "boolean, not null"}
+  created_at {label: "timestamp, not null"}
+  updated_at {label: "timestamp, not null"}
+
+users 1--* tweets
+users 1--* likes
+users 1--* retweets
+users 1--* bookmarks
+tweets 1--* likes
+tweets 1--* retweets
+tweets 1--* bookmarks
+users 1--* follows {label: "follower_id"}
+users 1--* follows {label: "followee_id"}
+users 1--* direct_messages {label: "sender_id"}
+users 1--* direct_messages {label: "receiver_id"}
+users 1--* notifications {label: "recipient_id"}
+users 1--* notifications {label: "actor_id"}
+tweets ?--* notifications {label: "tweet_id"}
